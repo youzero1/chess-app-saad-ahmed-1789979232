@@ -24,7 +24,7 @@ export function Square({
   onSelect,
 }: SquareProps) {
   const light = isLightSquare(square);
-  const base = light ? 'bg-[#eeeed2]' : 'bg-[#769656]';
+  const base = light ? 'bg-[var(--theme-light-square)]' : 'bg-[var(--theme-dark-square)]';
 
   const label = piece
     ? `${squareName(square)}, ${pieceLabel(piece)}`
@@ -37,16 +37,16 @@ export function Square({
       aria-label={label}
       className={`relative flex aspect-square w-full items-center justify-center ${base} transition-colors`}
     >
-      {isLastMove && <span className="absolute inset-0 bg-[#f7f769]/40" />}
-      {selected && <span className="absolute inset-0 bg-[#baca44]/70" />}
+      {isLastMove && <span className="absolute inset-0 bg-[var(--theme-last-move)]/45" />}
+      {selected && <span className="absolute inset-0 bg-[var(--theme-selected)]/75" />}
       {inCheck && (
         <span className="absolute inset-0 bg-red-500/55" />
       )}
       {isLegalTarget && !isCaptureTarget && (
-        <span className="absolute h-[22%] w-[22%] rounded-full bg-[#1b3a1b]/40" />
+        <span className="absolute h-[22%] w-[22%] rounded-full bg-[var(--theme-move)]/45" />
       )}
       {isCaptureTarget && (
-        <span className="absolute inset-[6%] rounded-full border-4 border-[#1b3a1b]/45" />
+        <span className="absolute inset-[6%] rounded-full border-4 border-[var(--theme-move)]/50" />
       )}
       {piece && (
         <span

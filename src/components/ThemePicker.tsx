@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, type CSSProperties, type ReactNode } from 'react';
 
-type ThemeId = 'green' | 'wood' | 'blue' | 'dark';
+type ThemeId = 'gold' | 'green' | 'wood' | 'blue' | 'dark';
 
 interface ThemeOption {
   id: ThemeId;
@@ -29,6 +29,17 @@ interface ThemeOption {
 }
 
 const THEMES: ThemeOption[] = [
+  {
+    id: 'gold',
+    name: 'Golden Yellow',
+    description: 'Warm gold & cream',
+    colors: {
+      page: '#fdf6e0', text: '#4a370a', muted: '#8a6b16', panel: '#5c440d', panelText: '#fdf6e0',
+      frame: '#7a5b12', frameRing: '#5c440d', lightSquare: '#f7edc8', darkSquare: '#c9a227',
+      accent: '#e8c547', accentHover: '#f2d770', accentText: '#4a370a', dialog: '#fbf3d9', dialogText: '#4a370a',
+      label: '#fbeec2', move: '#42310a', selected: '#e8c547', lastMove: '#ffe066',
+    },
+  },
   {
     id: 'green',
     name: 'Tournament',
@@ -84,9 +95,9 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 const STORAGE_KEY = 'saad-chess-theme';
 
 function getInitialTheme(): ThemeId {
-  if (typeof window === 'undefined') return 'green';
+  if (typeof window === 'undefined') return 'gold';
   const saved = window.localStorage.getItem(STORAGE_KEY);
-  return THEMES.some((theme) => theme.id === saved) ? (saved as ThemeId) : 'green';
+  return THEMES.some((theme) => theme.id === saved) ? (saved as ThemeId) : 'gold';
 }
 
 function themeVariables(theme: ThemeOption): CSSProperties {
@@ -120,7 +131,7 @@ export function ThemePicker() {
         <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--theme-muted)]">Choose a theme</p>
         <p className="text-xs text-[var(--theme-muted)]">Saved automatically</p>
       </div>
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
         {THEMES.map((option) => {
           const active = context.theme === option.id;
           return (

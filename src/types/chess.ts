@@ -49,4 +49,6 @@ export interface GameState {
   fullmoveNumber: number;
   status: GameStatus;
   lastMove: Move | null;
+  /** Every move played so far, in order — the source of truth for captured pieces. */
+  history: Move[];
 }

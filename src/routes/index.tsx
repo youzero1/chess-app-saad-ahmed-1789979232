@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { createFileRoute } from '@tanstack/react-router';
 import { Board } from '@/components/Board';
+import { CapturedPanel } from '@/components/CapturedPanel';
 import { GameStatus } from '@/components/GameStatus';
 import { ModePanel, type GameMode } from '@/components/ModePanel';
 import { PromotionDialog } from '@/components/PromotionDialog';
@@ -48,24 +49,27 @@ function GamePage() {
       />
 
       {mode === 'local' || online.room ? (
-        <>
-          <GameStatus
-            state={game.state}
-            onNewGame={game.newGame}
-            actionLabel="New game"
-            showAction={!isOnlineRoom}
-          />
-          <Board
-            state={game.state}
-            selected={game.selected}
-            legalMoves={game.legalMoves}
-            onSelect={game.selectSquare}
-            orientation={isOnlineRoom && online.playerColor === 'b' ? 'b' : 'w'}
-          />
+        <div className="flex w-full flex-col items-center gap-4 lg:flex-row lg:items-start lg:justify-center">
+          <div className="flex w-full max-w-[36rem] flex-col items-center gap-4">
+            <GameStatus
+              state={game.state}
+              onNewGame={game.newGame}
+              actionLabel="New game"
+              showAction={!isOnlineRoom}
+            />
+            <Board
+              state={game.state}
+              selected={game.selected}
+              legalMoves={game.legalMoves}
+              onSelect={game.selectSquare}
+              orientation={isOnlineRoom && online.playerColor === 'b' ? 'b' : 'w'}
+            />
+          </div>
+          <CapturedPanel state={game.state} />
           {game.pendingPromotion && (
             <PromotionDialog color={game.state.turn} onChoose={game.promote} />
           )}
-        </>
+        </div>
       ) : (
         <div className="flex min-h-64 w-full max-w-[36rem] items-center justify-center rounded-2xl border-2 border-dashed border-black/10 text-center text-sm text-[var(--theme-muted)]">
           Create a private room or enter a friend’s code to start playing online.

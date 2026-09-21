@@ -12,6 +12,7 @@ export function createInitialState(): GameState {
     fullmoveNumber: 1,
     status: 'playing',
     lastMove: null,
+    history: [],
   };
 }
 
@@ -170,6 +171,7 @@ export function applyMove(state: GameState, move: Move): GameState {
     fullmoveNumber: state.turn === 'b' ? state.fullmoveNumber + 1 : state.fullmoveNumber,
     status: 'playing',
     lastMove: move,
+    history: [...(state.history ?? []), move],
   };
 
   next.status = evaluateStatus(next);

@@ -4,9 +4,11 @@ import { colorName, opponent } from '@/lib/board';
 interface GameStatusProps {
   state: GameState;
   onNewGame: () => void;
+  actionLabel?: string;
+  showAction?: boolean;
 }
 
-export function GameStatus({ state, onNewGame }: GameStatusProps) {
+export function GameStatus({ state, onNewGame, actionLabel = 'New game', showAction = true }: GameStatusProps) {
   const { turn, status } = state;
 
   let headline: string;
@@ -47,13 +49,15 @@ export function GameStatus({ state, onNewGame }: GameStatusProps) {
           {sub && <p className="text-sm font-medium text-red-300">{sub}</p>}
         </div>
       </div>
-      <button
-        type="button"
-        onClick={onNewGame}
-        className="rounded-lg bg-[var(--theme-accent)] px-4 py-2 text-sm font-semibold text-[var(--theme-accent-text)] shadow-sm transition hover:bg-[var(--theme-accent-hover)]"
-      >
-        New Game
-      </button>
+      {showAction && (
+        <button
+          type="button"
+          onClick={onNewGame}
+          className="rounded-lg bg-[var(--theme-accent)] px-4 py-2 text-sm font-semibold text-[var(--theme-accent-text)] shadow-sm transition hover:bg-[var(--theme-accent-hover)]"
+        >
+          {actionLabel}
+        </button>
+      )}
     </div>
   );
 }

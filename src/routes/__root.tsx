@@ -13,7 +13,7 @@ function RootLayout() {
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-5 px-4 py-6 sm:py-8">
           <header className="text-center">
             <h1 className="text-3xl font-bold tracking-tight">Saad Chess</h1>
-            <p className="text-sm text-[var(--theme-muted)]">Pass and play on one board</p>
+            <p className="text-sm text-[var(--theme-muted)]">Play locally or invite a friend online</p>
           </header>
           <ThemePicker />
           <Outlet />

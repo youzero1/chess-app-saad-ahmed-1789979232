@@ -21,14 +21,14 @@ export function Board({ state, selected, legalMoves, onSelect }: BoardProps) {
   const ranks = [7, 6, 5, 4, 3, 2, 1, 0];
 
   return (
-    <div className="w-full max-w-[36rem] rounded-2xl bg-[#5a3722] p-3 shadow-2xl shadow-black/40 ring-1 ring-black/30 sm:p-4">
+    <div className="w-full max-w-[36rem] rounded-2xl bg-[#2f4f30] p-3 shadow-2xl shadow-black/40 ring-1 ring-black/30 sm:p-4">
       <div className="flex">
-        <div className="mr-1 flex w-4 flex-col justify-around text-center text-xs font-semibold text-amber-100/80">
+        <div className="mr-1 flex w-4 flex-col justify-around text-center text-xs font-semibold text-[#e6efd8]/85">
           {ranks.map((r) => (
             <span key={r}>{r + 1}</span>
           ))}
         </div>
-        <div className="grid w-full grid-cols-8 overflow-hidden rounded-sm ring-2 ring-[#3d2415]">
+        <div className="grid w-full grid-cols-8 overflow-hidden rounded-sm ring-2 ring-[#1e3520]">
           {ranks.map((rank) =>
             FILES.map((_, file) => {
               const square: Sq = { file, rank };
@@ -56,7 +56,7 @@ export function Board({ state, selected, legalMoves, onSelect }: BoardProps) {
         </div>
       </div>
       <div className="mt-1 flex pl-5">
-        <div className="grid w-full grid-cols-8 text-center text-xs font-semibold text-amber-100/80">
+        <div className="grid w-full grid-cols-8 text-center text-xs font-semibold text-[#e6efd8]/85">
           {FILES.map((f) => (
             <span key={f}>{f}</span>
           ))}

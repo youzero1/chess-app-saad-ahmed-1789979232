@@ -34,10 +34,10 @@ export function GameStatus({ state, onNewGame }: GameStatusProps) {
   }
 
   return (
-    <div className="flex w-full max-w-[36rem] flex-wrap items-center justify-between gap-3 rounded-xl bg-[#3d2415]/90 px-4 py-3 text-amber-50 ring-1 ring-black/30">
+    <div className="flex w-full max-w-[36rem] flex-wrap items-center justify-between gap-3 rounded-xl bg-[#1e3520]/95 px-4 py-3 text-[#eef5e4] ring-1 ring-black/30">
       <div className="flex items-center gap-3">
         <span
-          className={`h-5 w-5 rounded-full ring-2 ring-amber-100/60 ${
+          className={`h-5 w-5 rounded-full ring-2 ring-[#cfe0b8]/70 ${
             turn === 'w' ? 'bg-white' : 'bg-neutral-900'
           }`}
           aria-hidden
@@ -50,7 +50,7 @@ export function GameStatus({ state, onNewGame }: GameStatusProps) {
       <button
         type="button"
         onClick={onNewGame}
-        className="rounded-lg bg-amber-200 px-4 py-2 text-sm font-semibold text-[#3d2415] transition hover:bg-amber-100"
+        className="rounded-lg bg-[#baca44] px-4 py-2 text-sm font-semibold text-[#1e3520] transition hover:bg-[#cdd96a]"
       >
         New Game
       </button>

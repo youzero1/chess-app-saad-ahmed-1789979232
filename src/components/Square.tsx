@@ -1,6 +1,7 @@
 import type { Piece, Square as Sq } from '@/types/chess';
 import { isLightSquare, squareName } from '@/lib/board';
-import { pieceGlyph, pieceLabel } from '@/lib/pieces';
+import { pieceLabel } from '@/lib/pieces';
+import { PieceIcon } from '@/components/PieceIcon';
 
 interface SquareProps {
   square: Sq;
@@ -49,19 +50,11 @@ export function Square({
         <span className="absolute inset-[6%] rounded-full border-4 border-[var(--theme-move)]/50" />
       )}
       {piece && (
-        <span
-          className={`relative select-none text-[clamp(1.6rem,7vw,3.2rem)] leading-none ${
-            piece.color === 'w' ? 'text-white' : 'text-neutral-900'
-          }`}
-          style={{
-            textShadow:
-              piece.color === 'w'
-                ? '0 1px 2px rgba(0,0,0,0.55)'
-                : '0 1px 2px rgba(255,255,255,0.25)',
-          }}
-        >
-          {pieceGlyph(piece)}
-        </span>
+        <PieceIcon
+          color={piece.color}
+          kind={piece.kind}
+          className="relative h-[84%] w-[84%] select-none"
+        />
       )}
     </button>
   );

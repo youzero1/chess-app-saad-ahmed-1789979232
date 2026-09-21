@@ -1,5 +1,6 @@
 import type { Color, PieceKind } from '@/types/chess';
-import { glyphFor, kindName } from '@/lib/pieces';
+import { kindName } from '@/lib/pieces';
+import { PieceIcon } from '@/components/PieceIcon';
 
 interface PromotionDialogProps {
   color: Color;
@@ -22,16 +23,9 @@ export function PromotionDialog({ color, onChoose }: PromotionDialogProps) {
               type="button"
               onClick={() => onChoose(kind)}
               aria-label={`Promote to ${kindName(kind)}`}
-              className="flex aspect-square items-center justify-center rounded-xl bg-[var(--theme-dark-square)] text-4xl ring-1 ring-black/30 transition hover:brightness-110"
+              className="flex aspect-square items-center justify-center rounded-xl bg-[var(--theme-dark-square)] p-1.5 ring-1 ring-black/30 transition hover:brightness-110"
             >
-              <span className={color === 'w' ? 'text-white' : 'text-neutral-900'}
-                style={{
-                  textShadow:
-                    color === 'w' ? '0 1px 2px rgba(0,0,0,0.55)' : '0 1px 2px rgba(255,255,255,0.25)',
-                }}
-              >
-                {glyphFor(color, kind)}
-              </span>
+              <PieceIcon color={color} kind={kind} className="h-full w-full" />
             </button>
           ))}
         </div>

@@ -10,7 +10,7 @@ function RootLayout() {
     <div className="min-h-screen bg-[#e7eedb] text-[#1e3520]">
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-4 py-8">
         <header className="text-center">
-          <h1 className="text-3xl font-bold tracking-tight">Chess</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Saad Chess</h1>
           <p className="text-sm text-[#5b7a4f]">Pass and play on one board</p>
         </header>
         <Outlet />

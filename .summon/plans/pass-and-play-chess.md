@@ -1,5 +1,5 @@
 ---
-status: pending
+status: implemented
 title: Pass-and-Play Chess with Legal Move Highlighting
 ---
 
